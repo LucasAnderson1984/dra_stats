@@ -1,0 +1,19 @@
+{
+  "name": "dra_stats",
+  "version": "1.0.0",
+  "description": "DRA Statistics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasAnderson1984/dra_stats.git"
+  },
+  "author": "Lucas Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasAnderson1984/dra_stats/issues"
+  },
+  "homepage": "https://github.com/LucasAnderson1984/dra_stats#readme"
+}
