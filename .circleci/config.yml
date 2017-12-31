@@ -47,9 +47,9 @@ jobs:
           name: Setup database.yml
           command: cp config/database.example.yml config/database.yml
 
-      - run:
-          name: Database setup
-          command: bin/rails db:schema:load --trace
+      # - run:
+      #     name: Database setup
+      #     command: bin/rails db:schema:load --trace
 
       # Run rspec in parallel
       - type: shell
