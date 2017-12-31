@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  username: apps-ruby
+
+development:
+  <<: *default
+  database: dra_stats
+
+test:
+  <<: *default
+  database: dra_stats_test
+
+production:
+  <<: *default
+  database: linkdra_stats
