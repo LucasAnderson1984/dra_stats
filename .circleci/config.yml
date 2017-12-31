@@ -8,12 +8,12 @@ jobs:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PG_HOST: localhost
-          PG_USER: apps-ruby
+          PG_USER: apps_ruby
           RACK_ENV: test
           RAILS_ENV: test
       - image: postgres:10.1
         environment:
-         POSTGRES_USER: apps-ruby
+         POSTGRES_USER: apps_ruby
          POSTGRES_DB: dra_stats_test
     steps:
       - checkout
@@ -47,18 +47,18 @@ jobs:
           name: Setup database.yml
           command: cp config/database.example.yml config/database.yml
 
-      # - run:
-      #     name: Database setup
-      #     command: bin/rails db:schema:load --trace
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
 
       # Run rspec in parallel
-      # - type: shell
-      #   command: |
-      #     bundle exec rspec --profile 10 \
-      #                       --format RspecJunitFormatter \
-      #                       --out test_results/rspec.xml \
-      #                       --format progress \
-      #                       $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - type: shell
+        command: |
+          bundle exec rspec --profile 10 \
+                            --format RspecJunitFormatter \
+                            --out test_results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
       # Save test results for timing analysis
       - store_test_results:
