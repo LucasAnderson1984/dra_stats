@@ -1,9 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
   pool: 5
+  port: 5432
   timeout: 5000
-  username: apps-ruby
+  username: apps_ruby
 
 development:
   <<: *default
@@ -15,4 +17,4 @@ test:
 
 production:
   <<: *default
-  database: linkdra_stats
+  database: dra_stats
