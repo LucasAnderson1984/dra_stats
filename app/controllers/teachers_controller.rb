@@ -1,17 +1,18 @@
+# frozen_string_literal: true
+
 class TeachersController < ApplicationController
-  def index
+  protected
 
-  end
+  def teacher_params
+    return {} if params[:teacher].nil?
 
-  def show
-
-  end
-
-  def create
-
-  end
-
-  def update
-
+    params
+      .require(:teacher)
+      .permit(
+        :first_name,
+        :grade,
+        :is_active,
+        :last_name
+      )
   end
 end

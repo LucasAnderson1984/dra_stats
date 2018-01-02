@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SimpleCRUD
   extend ActiveSupport::Concern
 
@@ -9,53 +11,42 @@ module SimpleCRUD
     render_show
   end
 
-  def new
-    render_new
-  end
-
   def create
-    redirect_to(resource, notice: t('.success')) and return if resource.save
+    render json: {
+      message: I18n.t('teachers.create.success'),
+      resource: resource
+    }.to_json and return if resource.save
 
-    flash[:alert] = t('.failure')
-    render_new
-  end
-
-  def edit
-    render_edit
+    render status: 422, json: {
+      message: I18n.t('teachers.create.failure')
+    }
   end
 
   def update
-    redirect_to(resource, notice: t('.success')) and return \
-      if resource.update_attributes(resource_params)
+    render status: 404, json: resource and return \
+    unless resource.is_a?(Teacher)
 
-    flash[:alert] = t('.failure')
-    render_edit
-  end
+    render json: {
+      message: I18n.t('teachers.update.success'),
+      resource: resource
+    }.to_json and return if resource.update_attributes(resource_params)
 
-  def destroy
-    redirect_to(resource, notice: t('.success')) and return \
-      if resource.destroy
-
-    flash[:alert] = t('.failure')
-    render_index
+    render status: 422, json: {
+      message: I18n.t('teachers.update.failure')
+    }
   end
 
   private
 
   def render_index
-    render :index, locals: { resources: resources }
+    render json: resources
   end
 
   def render_show
-    render :show, locals: { resource: resource }
-  end
+    render status: 404, json: resource and return \
+    unless resource.is_a?(Teacher)
 
-  def render_new
-    render :new, locals: { resource: resource }
-  end
-
-  def render_edit
-    render :edit, locals: { resource: resource }
+    render json: resource
   end
 
   def resource
@@ -63,7 +54,7 @@ module SimpleCRUD
   end
 
   def resources
-    @resources ||= search.result
+    @resources ||= resource_class.all
   end
 
   def build_resource
@@ -72,6 +63,8 @@ module SimpleCRUD
 
   def find_resource
     resource_class.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => e
+    e
   end
 
   def resource_name

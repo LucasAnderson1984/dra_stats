@@ -1,4 +1,10 @@
 # frozen_string_literal: true
 
 en:
-  hello: "Hello world"
+  teachers:
+    create:
+      success: 'Teacher was created successfully'
+      failure: 'Teacher was not created successfully'
+    update:
+      success: 'Teacher was updated successfully'
+      failure: 'Teacher was not updated successfully'
