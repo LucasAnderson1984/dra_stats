@@ -17,7 +17,6 @@ gem 'rack-cors'
 gem 'rails', '~> 5.1.4'
 gem 'ransack', '~> 1.8.3'
 gem 'rubocop', '0.49.1', require: false
-gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'

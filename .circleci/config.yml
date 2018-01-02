@@ -11,10 +11,11 @@ jobs:
           PG_USER: apps_ruby
           RACK_ENV: test
           RAILS_ENV: test
-      - image: postgres:10.1
+      - image: circleci/postgres:10.1
         environment:
          POSTGRES_USER: apps_ruby
          POSTGRES_DB: dra_stats_test
+         POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
@@ -49,7 +50,7 @@ jobs:
 
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
+          command: bin/rails db:create db:schema:load --trace
 
       # Run rspec in parallel
       - type: shell
