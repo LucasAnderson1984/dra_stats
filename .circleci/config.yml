@@ -15,7 +15,6 @@ jobs:
         environment:
          POSTGRES_USER: apps_ruby
          POSTGRES_DB: dra_stats_test
-         POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
@@ -56,7 +55,6 @@ jobs:
       - type: shell
         command: |
           bundle exec rspec --profile 10 \
-                            --format RspecJunitFormatter \
                             --out test_results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
