@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103043034) do
+ActiveRecord::Schema.define(version: 20180104091042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
+
+  create_table "dra_scores", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "rank"
+    t.string "dra_level"
+    t.index ["dra_level"], name: "index_dra_scores_on_dra_level", unique: true
+    t.index ["rank"], name: "index_dra_scores_on_rank", unique: true
+  end
 
   create_table "students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "teacher_id", null: false
