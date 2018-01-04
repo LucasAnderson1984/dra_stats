@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 en:
+  dra_scores:
+    create:
+      success: 'DRA Score was created successfully'
+      failure: 'DRA Score was not created successfully'
+    update:
+      success: 'DRA Score was updated successfully'
+      failure: 'DRA Score was not updated successfully'
   students:
     create:
       success: 'Student was created successfully'
