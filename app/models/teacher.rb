@@ -3,7 +3,7 @@
 class Teacher < ApplicationRecord
   include ClassyEnum::ActiveRecord
 
-  has_many :students
+  has_many :students, dependent: :destroy
 
   classy_enum_attr :grade
 
