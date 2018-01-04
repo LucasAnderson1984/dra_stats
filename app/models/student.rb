@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Teacher < ApplicationRecord
+class Student < ApplicationRecord
   include ClassyEnum::ActiveRecord
 
-  has_many :students, dependent: :destroy
+  belongs_to :teacher
 
   classy_enum_attr :grade
 
@@ -12,9 +12,18 @@ class Teacher < ApplicationRecord
     :grade,
     :is_active,
     :last_name,
+    :student_id,
+    :teacher,
     presence: true
 
-  validates :is_active, numericality: true
+  validates \
+    :is_active,
+    :student_id,
+    numericality: true
+
+  def full_name
+    [first_name, middle_name, last_name].compact.join(' ')
+  end
 
   def long_name
     [last_name, first_name].compact.join(', ')

@@ -13,26 +13,26 @@ module SimpleCRUD
 
   def create
     render json: {
-      message: I18n.t('teachers.create.success'),
+      message: I18n.t("#{controller_name}.create.success"),
       resource: resource
     }.to_json and return if resource.save
 
     render status: 422, json: {
-      message: I18n.t('teachers.create.failure')
+      message: I18n.t("#{controller_name}.create.failure")
     }
   end
 
   def update
     render status: 404, json: resource and return \
-    unless resource.is_a?(Teacher)
+    unless resource.is_a?(resource_class)
 
     render json: {
-      message: I18n.t('teachers.update.success'),
+      message: I18n.t("#{controller_name}.update.success"),
       resource: resource
     }.to_json and return if resource.update_attributes(resource_params)
 
     render status: 422, json: {
-      message: I18n.t('teachers.update.failure')
+      message: I18n.t("#{controller_name}.update.failure")
     }
   end
 
@@ -44,7 +44,7 @@ module SimpleCRUD
 
   def render_show
     render status: 404, json: resource and return \
-    unless resource.is_a?(Teacher)
+    unless resource.is_a?(resource_class)
 
     render json: resource
   end

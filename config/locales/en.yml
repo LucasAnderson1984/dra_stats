@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 en:
+  students:
+    create:
+      success: 'Student was created successfully'
+      failure: 'Student was not created successfully'
+    update:
+      success: 'Student was updated successfully'
+      failure: 'Student was not updated successfully'
   teachers:
     create:
       success: 'Teacher was created successfully'
