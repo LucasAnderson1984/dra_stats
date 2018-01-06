@@ -1,10 +1,23 @@
 # frozen_string_literal: true
 
 en:
+  dra_score_students:
+    create:
+      success: "Student's DRA Score was created successfully"
+      failure: "Student's DRA Score was not created successfully"
+    destroy:
+      success: "Student's DRA Score was deleted successfully"
+      failure: "Student's DRA Score was not deleted successfully"
+    update:
+      success: "Student's DRA Score was updated successfully"
+      failure: "Student's DRA Score was not updated successfully"
   dra_scores:
     create:
       success: 'DRA Score was created successfully'
       failure: 'DRA Score was not created successfully'
+    destroy:
+      success: 'DRA Score was deleted successfully'
+      failure: 'DRA Score was not deleted successfully'
     update:
       success: 'DRA Score was updated successfully'
       failure: 'DRA Score was not updated successfully'

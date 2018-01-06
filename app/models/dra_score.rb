@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class DraScore < ApplicationRecord
+  has_many :dra_score_students
+  has_many :students, through: :dra_score_students
+
   validates \
     :dra_level,
     :rank,

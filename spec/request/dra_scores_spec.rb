@@ -175,4 +175,36 @@ describe 'dra_scores', type: :request do
       end
     end
   end
+
+  describe 'DELETE destory' do
+    let(:request!) do
+      delete dra_score_path(dra_score_id),
+             params: params,
+             headers: headers
+    end
+
+    context 'when the student exists' do
+      let(:dra_score) { create(:dra_score) }
+      let(:dra_score_id) { dra_score.id }
+
+      it { is_expected.to have_http_status(:ok) }
+      it 'they see a success message' do
+        body = JSON.parse(subject.body)
+
+        expect(body['message']).to eq(I18n.t('dra_scores.destroy.success'))
+      end
+    end
+
+    context 'when the student does not exist' do
+      let(:dra_score) { create(:dra_score) }
+      let(:dra_score_id) { SecureRandom.uuid }
+
+      it { is_expected.to have_http_status(:not_found) }
+      it 'should return an error message' do
+        body = JSON.parse(subject.body)
+
+        expect(body).to eq("Couldn't find DraScore with 'id'=#{dra_score_id}")
+      end
+    end
+  end
 end

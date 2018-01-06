@@ -4,6 +4,8 @@ class Student < ApplicationRecord
   include ClassyEnum::ActiveRecord
 
   belongs_to :teacher
+  has_many :dra_score_students
+  has_many :dra_scores, through: :dra_score_students
 
   classy_enum_attr :grade
 
@@ -12,13 +14,13 @@ class Student < ApplicationRecord
     :grade,
     :is_active,
     :last_name,
-    :student_id,
+    :student_id_number,
     :teacher,
     presence: true
 
   validates \
     :is_active,
-    :student_id,
+    :student_id_number,
     numericality: true
 
   def full_name
