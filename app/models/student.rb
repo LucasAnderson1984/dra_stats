@@ -4,7 +4,7 @@ class Student < ApplicationRecord
   include ClassyEnum::ActiveRecord
 
   belongs_to :teacher
-  has_many :dra_score_students
+  has_many :dra_score_students, dependent: :destroy
   has_many :dra_scores, through: :dra_score_students
 
   classy_enum_attr :grade
