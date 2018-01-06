@@ -27,7 +27,7 @@ class StudentsController < ApplicationController
         :is_active,
         :last_name,
         :middle_name,
-        :student_id,
+        :student_id_number,
         :teacher_id
       )
   end

@@ -36,6 +36,20 @@ module SimpleCRUD
     }
   end
 
+  def destroy
+    render status: 404, json: resource and return \
+    unless resource.is_a?(resource_class)
+
+    render json: {
+      message: I18n.t("#{controller_name}.destroy.success"),
+      resource: resource
+    }.to_json and return if resource.destroy
+
+    render status: 422, json: {
+      message: I18n.t("#{controller_name}.destroy.failure")
+    }
+  end
+
   private
 
   def render_index
