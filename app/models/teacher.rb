@@ -19,4 +19,8 @@ class Teacher < ApplicationRecord
   def long_name
     [last_name, first_name].compact.join(', ')
   end
+
+  def student_count
+    students.length
+  end
 end
