@@ -14,7 +14,7 @@ task :calendar_eslint do
 end
 
 task :scss_lint do
-  system('scss-lint app/assets/stylesheets') or exit 1
+  system('scss-lint client/src/assets') or exit 1
 end
 
 namespace :test do

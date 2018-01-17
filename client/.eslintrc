@@ -1,0 +1,11 @@
+{
+  settings: {
+    "import/resolver": {
+      "webpack": { config: 'client/calendar_app/webpack.config.js' }
+    }
+  },
+  "rules": {
+    "react/jsx-filename-extension": "off",
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"]
+}
