@@ -34,7 +34,7 @@ class Menue extends Component {
         </div>
       </nav>
     );
-  };
+  }
 }
 
 export default Menue;

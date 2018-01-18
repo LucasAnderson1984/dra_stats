@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
   return { teachers: teachers };
 };
 
-const TeachersContainer = connect(mapStateToProps, mapDispatchToProps)(TeacherList);
+const TeachersContainer =
+  connect(mapStateToProps, mapDispatchToProps)(TeacherList);
 
 export default TeachersContainer;

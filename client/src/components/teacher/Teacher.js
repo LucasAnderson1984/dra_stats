@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { capitalize } from './../../lib/string_conversion'
 
 export default class TeacherList extends Component {
@@ -13,5 +14,9 @@ export default class TeacherList extends Component {
         <td>&nbsp;</td>
       </tr>
     );
+  }
+
+  static propTypes = {
+    teacher: PropTypes.object.isRequired,
   }
 }

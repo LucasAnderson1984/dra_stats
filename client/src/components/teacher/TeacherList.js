@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Search from './../Search';
 import Teacher from './Teacher'
 
@@ -97,4 +98,9 @@ export default class TeacherList extends Component {
       </div>
     );
   }
-};
+
+  static propTypes = {
+    fetchTeachers: PropTypes.func,
+    teachers: PropTypes.array,
+  }
+}

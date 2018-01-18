@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { GRADE_LEVELS } from './../lib/constants'
@@ -25,7 +26,7 @@ class Search extends Component {
 
   render() {
     const { selectedOption } = this.state;
-  	const value = selectedOption && selectedOption.value;
+    const value = selectedOption && selectedOption.value;
     const gradeOptions = Object.keys(GRADE_LEVELS).map(key => (
       { label: GRADE_LEVELS[key], value: key }
     ));
@@ -43,7 +44,6 @@ class Search extends Component {
                   className='form-control'
                   onInput={this.onLastNameFilter}
                   placeholder='Last Name'
-                  ref='last_name'
                   type='text'
                 />
               </div>
@@ -54,7 +54,6 @@ class Search extends Component {
                   className='form-control'
                   onInput={this.onFirstNameFilter}
                   placeholder='First Name'
-                  ref='first_name'
                   type='text'
                 />
               </div>
@@ -74,7 +73,13 @@ class Search extends Component {
         </div>
       </div>
     );
-  };
+  }
+
+  static propTypes = {
+    filterGrade: PropTypes.func,
+    filterFirstName: PropTypes.func,
+    filterLastName: PropTypes.func,
+  }
 }
 
 export default Search;
