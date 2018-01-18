@@ -9,12 +9,8 @@ task :eslint do
   system('node_modules/.bin/eslint app/assets/javascripts') or exit 1
 end
 
-task :calendar_eslint do
-  system('node_modules/.bin/eslint client') or exit 1
-end
-
 task :scss_lint do
-  system('scss-lint app/assets/stylesheets') or exit 1
+  system('scss-lint client/src/assets') or exit 1
 end
 
 namespace :test do

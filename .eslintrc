@@ -10,7 +10,7 @@
     "react/jsx-uses-react": 1,
   },
   "env": {
-    "es7": true,
+    "es6": true,
     "browser": true,
     "amd": true,
     "jest": true
