@@ -9,8 +9,8 @@ task :eslint do
   system('node_modules/.bin/eslint app/assets/javascripts') or exit 1
 end
 
-task :calendar_eslint do
-  system('node_modules/.bin/eslint client') or exit 1
+task :client_eslint do
+  system('client/node_modules/.bin/eslint client') or exit 1
 end
 
 task :scss_lint do
@@ -23,4 +23,4 @@ namespace :test do
   end
 end
 
-task default: %w(spec test:js rubocop eslint scss_lint)
+task default: %w(spec test:js rubocop client_eslint eslint scss_lint)
