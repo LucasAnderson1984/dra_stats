@@ -8,3 +8,4 @@
 /config/database.yml
 /coverage
 /node_modules
+./package-lock.json
