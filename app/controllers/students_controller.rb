@@ -25,6 +25,7 @@ class StudentsController < ApplicationController
         :first_name,
         :grade,
         :is_active,
+        :is_tutored,
         :last_name,
         :middle_name,
         :student_id_number,

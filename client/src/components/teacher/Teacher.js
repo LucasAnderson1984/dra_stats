@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { capitalize } from './../../lib/string_conversion'
 
-export default class TeacherList extends Component {
+export default class Teacher extends Component {
   render() {
     return(
       <tr key={this.props.teacher.id}>

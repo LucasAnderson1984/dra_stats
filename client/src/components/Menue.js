@@ -25,7 +25,13 @@ class Menue extends Component {
             <ul className="nav navbar-nav">
               <li className="active">
                 <Link className='nav-item nav-link active' to='/teachers'>
-                  Teacher
+                  Teachers
+                  <span className='sr-only'>(current)</span>
+                </Link>
+              </li>
+              <li className="active">
+                <Link className='nav-item nav-link active' to='/students'>
+                  Students
                   <span className='sr-only'>(current)</span>
                 </Link>
               </li>
