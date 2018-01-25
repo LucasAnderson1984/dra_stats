@@ -13,6 +13,7 @@ class Student < ApplicationRecord
     :first_name,
     :grade,
     :is_active,
+    :is_tutored,
     :last_name,
     :student_id_number,
     :teacher,
@@ -20,6 +21,7 @@ class Student < ApplicationRecord
 
   validates \
     :is_active,
+    :is_tutored,
     :student_id_number,
     numericality: true
 

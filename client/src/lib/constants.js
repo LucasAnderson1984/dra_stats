@@ -7,3 +7,8 @@ export const GRADE_LEVELS = {
   fifth: 'Fifth',
   sixth: 'Sixth',
 };
+
+export const TUTORED_OPTIONS = {
+  Yes: 'Yes',
+  No: 'No',
+};

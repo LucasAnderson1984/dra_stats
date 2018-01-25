@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import { GRADE_LEVELS } from './../lib/constants'
+import { GRADE_LEVELS } from './../../lib/constants'
 
-class Search extends Component {
+class TeacherSearch extends Component {
   state = {
     selectedOption: '',
   }
@@ -61,7 +61,7 @@ class Search extends Component {
             <div className='col-md-2'>
               <div className='form-group'>
                 <Select
-                  placeholder='Please select'
+                  placeholder='Please select a grade'
                   style={{width: '180px'}}
                   value={value}
                   onChange={this.handleChange}
@@ -82,4 +82,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default TeacherSearch;

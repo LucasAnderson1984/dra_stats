@@ -1,75 +1,93 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TeacherSearch from './TeacherSearch';
-import Teacher from './Teacher'
+import StudentSearch from './StudentSearch';
+import Students from './Student'
 
-export default class TeacherList extends Component {
+export default class StudentList extends Component {
   state = {
     count: 0,
     first_name: '',
     grade: '',
     last_name: '',
-    teachers: [],
+    students: [],
+    tutored: '',
   };
 
   componentDidUpdate() {
     if(this.state.count === 0) {
       this.setState({
         count: 1,
-        teachers: this.props.teachers,
+        students: this.props.students,
       });
     }
   }
 
   componentDidMount() {
-    this.props.fetchTeachers();
+    this.props.fetchStudents();
   }
 
   filterFirstName = (name) => {
     this.setState({
       first_name: name,
-    }, () => this.setTeachers());
+    },
+      () => this.setStudents()
+    );
   };
 
   filterGrade = (grade) => {
     this.setState({
       grade: grade,
-    }, () => this.setTeachers());
+    },
+      () => this.setStudents()
+    );
   };
 
   filterLastName = (name) => {
     this.setState({
       last_name: name,
-    }, () => this.setTeachers());
-  };
-
-  filterTeachers = () => {
-    return this.props.teachers.filter(teacher =>
-      teacher.last_name.toLowerCase().startsWith(
-        this.state.last_name.toLowerCase()
-      ) && teacher.first_name.toLowerCase().startsWith(
-        this.state.first_name.toLowerCase()
-      ) && teacher.grade.includes(
-        this.state.grade
-      )
+    },
+      () => this.setStudents()
     );
   };
 
-  setTeachers = () => {
+  filterStudents = () => {
+    return this.props.students.filter(student =>
+      student.first_name.toLowerCase().startsWith(
+        this.state.first_name.toLowerCase()
+      ) && student.last_name.toLowerCase().startsWith(
+        this.state.last_name.toLowerCase()
+      ) && student.grade.includes(
+        this.state.grade
+      ) && (student.is_tutored ? 'Yes' : 'No').includes(
+        this.state.tutored
+      )
+    )
+  }
+
+  filterTutored = (tutored) => {
     this.setState({
-      teachers: this.filterTeachers(),
+      tutored: tutored,
+    },
+      () => this.setStudents()
+    );
+  };
+
+  setStudents = () => {
+    this.setState({
+      students: this.filterStudents(),
     });
   };
 
   render() {
     return (
       <div>
-        <h1 className='page-header'>Teachers</h1>
+        <h1 className='page-header'>Students</h1>
         <div>
-          <TeacherSearch
+          <StudentSearch
+            filterGrade={this.filterGrade}
             filterFirstName={this.filterFirstName}
             filterLastName={this.filterLastName}
-            filterGrade={this.filterGrade}
+            filterTutored={this.filterTutored}
           />
         </div>
         <div>
@@ -79,14 +97,14 @@ export default class TeacherList extends Component {
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Grade</th>
-                <th>Number of Students</th>
+                <th>Tutored</th>
                 <th>Active</th>
                 <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.teachers.map((teacher) => (
-                <Teacher key={teacher.id} teacher={teacher} />
+              {this.state.students.map((student) => (
+                <Students key={student.id} student={student} />
               ))}
             </tbody>
           </table>
@@ -96,7 +114,7 @@ export default class TeacherList extends Component {
   }
 
   static propTypes = {
-    fetchTeachers: PropTypes.func,
-    teachers: PropTypes.array,
+    fetchStudents: PropTypes.func,
+    students: PropTypes.array,
   }
 }
