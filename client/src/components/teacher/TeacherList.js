@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TeacherSearch from './TeacherSearch';
-import Teacher from './Teacher'
+import Teachers from './Teachers';
 
 export default class TeacherList extends Component {
   state = {
@@ -64,7 +64,7 @@ export default class TeacherList extends Component {
   render() {
     return (
       <div>
-        <h1 className='page-header'>Teachers</h1>
+        <h2 className='page-header'>Teachers</h2>
         <div>
           <TeacherSearch
             filterFirstName={this.filterFirstName}
@@ -86,7 +86,7 @@ export default class TeacherList extends Component {
             </thead>
             <tbody>
               {this.state.teachers.map((teacher) => (
-                <Teacher key={teacher.id} teacher={teacher} />
+                <Teachers key={teacher.id} teacher={teacher} />
               ))}
             </tbody>
           </table>

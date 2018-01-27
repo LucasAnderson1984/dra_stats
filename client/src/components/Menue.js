@@ -21,16 +21,17 @@ class Menue extends Component {
             </button>
             <Link className='navbar-brand' to='/'>DRA Score</Link>
           </div>
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className="collapse navbar-collapse"
+               id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li className="active">
-                <Link className='nav-item nav-link active' to='/teachers'>
+              <li>
+                <Link className='nav-item nav-link' to='/teachers'>
                   Teachers
                   <span className='sr-only'>(current)</span>
                 </Link>
               </li>
-              <li className="active">
-                <Link className='nav-item nav-link active' to='/students'>
+              <li>
+                <Link className='nav-item nav-link' to='/students'>
                   Students
                   <span className='sr-only'>(current)</span>
                 </Link>

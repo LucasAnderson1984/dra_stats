@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StudentSearch from './StudentSearch';
-import Students from './Student'
+import Students from './Students';
 
 export default class StudentList extends Component {
   state = {
@@ -81,7 +81,7 @@ export default class StudentList extends Component {
   render() {
     return (
       <div>
-        <h1 className='page-header'>Students</h1>
+        <h2 className='page-header'>Students</h2>
         <div>
           <StudentSearch
             filterGrade={this.filterGrade}
@@ -94,6 +94,7 @@ export default class StudentList extends Component {
           <table className='table table-striped'>
             <thead>
               <tr>
+                <th>Student ID Number</th>
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Grade</th>

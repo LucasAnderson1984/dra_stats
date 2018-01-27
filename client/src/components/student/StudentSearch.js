@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
-import { GRADE_LEVELS, TUTORED_OPTIONS } from './../../lib/constants'
+import { GRADE_LEVELS, TUTORED_OPTIONS } from './../../lib/constants';
 
 class StudentSearch extends Component {
   state = {
