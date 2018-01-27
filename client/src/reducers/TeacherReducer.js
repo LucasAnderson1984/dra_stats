@@ -1,7 +1,13 @@
-import { FETCH_TEACHERS_SUCCESS } from './../actions/index';
+import {
+          FETCH_TEACHERS_SUCCESS,
+          FETCH_TEACHER_SUCCESS,
+       } from './../actions/index';
 
 export default function teacherReducer(state = [], action) {
   switch (action.type) {
+    case FETCH_TEACHER_SUCCESS: {
+      return { ...state, teacher: action.teacher, students: action.students };
+    }
     case FETCH_TEACHERS_SUCCESS: {
       return { ...state, all: action.teachers };
     }
