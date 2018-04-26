@@ -1,9 +1,12 @@
-import { request } from './../lib/jsonapi';
+import { request, post } from './../lib/jsonapi';
 
 export const FETCH_TEACHERS_FAILURE = 'FETCH_TEACHERS_FAILURE';
 export const FETCH_TEACHERS_SUCCESS = 'FETCH_TEACHERS_SUCCESS';
 export const FETCH_TEACHER_FAILURE = 'FETCH_TEACHER_FAILURE';
 export const FETCH_TEACHER_SUCCESS = 'FETCH_TEACHER_SUCCESS';
+export const CREATE_TEACHER_FAILURE = 'CREATE_TEACHER_FAILURE';
+export const CREATE_TEACHER_SUCCESS = 'CREATE_TEACHER_SUCCESS';
+export const CREATE_TEACHER_REQUEST = 'CREATE_TEACHER_REQUEST';
 
 export function fetchTeacherFailure(error) {
   return {
@@ -34,6 +37,26 @@ export function fetchTeachersSuccess(teachers) {
   };
 }
 
+export function createTeacherRequest() {
+  return {
+    type: CREATE_TEACHER_REQUEST,
+  };
+}
+
+export function createTeacherFailure(error) {
+  return {
+    type: CREATE_TEACHER_FAILURE,
+    error,
+  };
+}
+
+export function createTeacherSuccess(teacher) {
+  return {
+    type: CREATE_TEACHER_SUCCESS,
+    teacher,
+  };
+}
+
 export function fetchTeacher(teacher_id) {
   return dispatch => {
     const teacher_url = `teachers/${teacher_id}`;
@@ -56,5 +79,25 @@ export function fetchTeachers() {
     return request('teachers')
       .then(json => (dispatch(fetchTeachersSuccess(json))))
       .catch(error => dispatch(fetchTeachersFailure(error)))
+  };
+}
+
+export function postTeacher(attributes) {
+  var active = attributes.Active || attributes.Active === undefined ? 1 : 0;
+
+  const teacherData = {
+    teacher: {
+      first_name: attributes.firstName,
+      grade: attributes.grade.value,
+      is_active: active,
+      last_name: attributes.lastName,
+    },
+  };
+
+  return dispatch => {
+    dispatch(createTeacherRequest());
+    return post('teachers', teacherData)
+      .then(json => (dispatch(createTeacherSuccess(json))))
+      .catch(error => dispatch(createTeacherFailure(error)))
   };
 }
