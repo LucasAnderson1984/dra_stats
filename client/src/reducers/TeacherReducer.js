@@ -13,7 +13,6 @@ export default function teacherReducer(state = [], action) {
       return { ...state, all: action.teachers };
     }
     case CREATE_TEACHER_SUCCESS: {
-      console.log('Post Teacher Success');
       return { ...state, teacher: action.teacher };
     }
     default: {
