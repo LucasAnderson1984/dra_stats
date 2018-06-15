@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TeacherSearch from './TeacherSearch';
 import Teachers from './Teachers';
+import NewTeacher from './NewTeacher';
 
 export default class TeacherList extends Component {
   state = {
@@ -9,6 +10,7 @@ export default class TeacherList extends Component {
     first_name: '',
     grade: '',
     last_name: '',
+    openModal: false,
     teachers: [],
   };
 
@@ -55,6 +57,19 @@ export default class TeacherList extends Component {
     );
   };
 
+  handleModal = (status) => {
+    this.setState({
+      openModal: status,
+      teachers: this.props.teachers,
+    }, () => this.setTeachers());
+  };
+
+  openModal = () => {
+    this.setState({
+      openModal: true,
+    });
+  };
+
   setTeachers = () => {
     this.setState({
       teachers: this.filterTeachers(),
@@ -64,6 +79,10 @@ export default class TeacherList extends Component {
   render() {
     return (
       <div>
+        <NewTeacher
+          handleModal={this.handleModal}
+          openModal={this.state.openModal}
+        />
         <h2 className='page-header'>Teachers</h2>
         <div>
           <TeacherSearch
@@ -81,7 +100,12 @@ export default class TeacherList extends Component {
                 <th>Grade</th>
                 <th>Number of Students</th>
                 <th>Active</th>
-                <th>&nbsp;</th>
+                <th>
+                  <button
+                    className='btn btn-primary glyphicon glyphicon-plus'
+                    onClick={this.openModal}
+                  />
+                </th>
               </tr>
             </thead>
             <tbody>

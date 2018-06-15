@@ -20,3 +20,7 @@ body {
   margin-right: 15px;
   width: 180px;
 }
+
+.ReactModalPortal button {
+  margin-right: 10px;
+}

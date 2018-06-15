@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { capitalize } from './../../lib/string_conversion';
 
 export default class Teachers extends Component {
-
   render() {
     return(
       <tr key={this.props.teacher.id}>
